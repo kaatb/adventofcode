@@ -2,9 +2,9 @@ package adventofcode.day1;
 
 import java.util.List;
 
-public class CaptchaCalculator {
+class CaptchaCalculator {
 
-    public int sum(List<CaptchaNumber> captchaNumbers) {
+    int sum(List<CaptchaNumber> captchaNumbers) {
         final CaptchaCalculator.CaptchaSum captchaSum = new CaptchaCalculator.CaptchaSum();
         captchaNumbers.stream()
                 .forEach(captchaNumber -> {

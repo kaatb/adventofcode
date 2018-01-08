@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class CaptchaNumberMapper {
+class CaptchaNumberMapper {
 
-    public List<CaptchaNumber>  mapOnNextElement(List<Integer> captcha) {
+    List<CaptchaNumber>  mapOnNextElement(List<Integer> captcha) {
         return IntStream.range(0, captcha.size())
                 .mapToObj(index -> {
                     if (index == captcha.size() - 1) {
@@ -20,7 +20,7 @@ public class CaptchaNumberMapper {
 
     }
 
-    public List<CaptchaNumber> mapOnElementHalfwayRound(List<Integer> captcha) {
+    List<CaptchaNumber> mapOnElementHalfwayRound(List<Integer> captcha) {
         int halfwayRoundIndex = captcha.size() / 2;
         return IntStream.range(0, captcha.size())
                 .mapToObj(index -> {

@@ -1,20 +1,20 @@
 package adventofcode.day1;
 
-public class CaptchaNumber {
+class CaptchaNumber {
 
     private int originalValue;
     private int valueToCompareWith;
 
-    public CaptchaNumber(int originalValue, int valueToCompareWith) {
+    CaptchaNumber(int originalValue, int valueToCompareWith) {
         this.originalValue = originalValue;
         this.valueToCompareWith = valueToCompareWith;
     }
 
-    public boolean shouldBeAdded() {
+    boolean shouldBeAdded() {
         return originalValue == valueToCompareWith;
     }
 
-    public int getValue() {
+    int getValue() {
         return originalValue;
     }
 }
