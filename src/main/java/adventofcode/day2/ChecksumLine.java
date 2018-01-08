@@ -10,8 +10,19 @@ class ChecksumLine {
         this.numbers = numbers;
     }
 
-    int getChecksum() {
+    int getMaxMinChecksum() {
         return getMax() - getMin();
+    }
+
+    int getEvenlyDivisibleChecksum() {
+        for (Integer number : numbers) {
+            for (Integer divider : numbers) {
+                if (!number.equals(divider) && number % divider == 0) {
+                    return number / divider;
+                }
+            }
+        }
+        return 0;
     }
 
     private int getMax(){
