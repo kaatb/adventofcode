@@ -5,7 +5,7 @@ class ManhattanDistanceResolver {
     public int resolve(Integer squareInput) {
 //        SpiralMemorySquare spiralMemorySquare = new SpiralMemorySquare(calculateSpiralMemorySize(squareInput));
 
-        SpiralMemoryList spiralMemoryList = new SpiralMemoryList(calculateSpiralMemorySize(squareInput));
+        SpiralCountingMemory spiralMemoryList = new SpiralCountingMemory(squareInput);
         return new ManhattanDistanceCalculator().calculate(squareInput, spiralMemoryList);
     }
 
