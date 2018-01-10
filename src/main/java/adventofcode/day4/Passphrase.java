@@ -11,7 +11,7 @@ public class Passphrase {
 
     public static void main(String[] args) throws IOException {
         PassphraseChecker passphraseChecker = new PassphraseChecker();
-        List<String> lines = Files.readLines(new File("src/main/resources/day4_part1.txt"), Charset.defaultCharset());
+        List<String> lines = Files.readLines(new File("src/main/resources/day4.txt"), Charset.defaultCharset());
 
         System.out.println(lines.stream()
                 .filter(passphraseChecker::isValid)
