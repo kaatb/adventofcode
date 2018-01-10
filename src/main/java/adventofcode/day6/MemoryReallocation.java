@@ -20,6 +20,8 @@ public class MemoryReallocation {
                 .mapToObj(MemoryBank::new)
                 .collect(toList());
 
-        System.out.println(new MemoryBankReallocator().reallocateUntilHistoryRepeatsItself(memoryBanks));
+        MemoryReallocationResult reallocationResult = new MemoryBankReallocator().reallocateUntilHistoryRepeatsItself(memoryBanks);
+        System.out.println(reallocationResult.getNumberOfCycles());
+        System.out.println(reallocationResult.getLoopSize());
     }
 }

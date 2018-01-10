@@ -41,7 +41,7 @@ public class MemoryBankReallocatorTest {
                 new MemoryBank(7),
                 new MemoryBank(0));
 
-        assertThat(reallocator.reallocateUntilHistoryRepeatsItself(memoryBanks)).isEqualTo(5);
+        assertThat(reallocator.reallocateUntilHistoryRepeatsItself(memoryBanks).getNumberOfCycles()).isEqualTo(5);
     }
 
     private void assertMemoryBankBlocks(List<MemoryBank> memoryBanks, List<Integer> expected) {

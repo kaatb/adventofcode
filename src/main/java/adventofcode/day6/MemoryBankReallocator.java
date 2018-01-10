@@ -1,26 +1,25 @@
 package adventofcode.day6;
 
-import com.google.common.collect.Lists;
-
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 class MemoryBankReallocator {
 
-    public int reallocateUntilHistoryRepeatsItself(List<MemoryBank> memoryBanks) {
-        List<List<Integer>> historyOfMemoryBanks = Lists.newArrayList();
+    public MemoryReallocationResult reallocateUntilHistoryRepeatsItself(List<MemoryBank> memoryBanks) {
+        MemoryReallocationResult memoryReallocationResult = new MemoryReallocationResult();
 
-        while (!historyOfMemoryBanks.contains(getMemoryBanksForHistory(memoryBanks))) {
-            historyOfMemoryBanks.add(getMemoryBanksForHistory(memoryBanks));
+        while (noDuplicationInMemoryBanksAllocationHistory(memoryBanks, memoryReallocationResult)) {
+            memoryReallocationResult.addHistory(getMemoryBanksForHistory(memoryBanks));
             reallocate(memoryBanks);
         }
+        memoryReallocationResult.addHistory(getMemoryBanksForHistory(memoryBanks));
 
-        return historyOfMemoryBanks.size();
+        return memoryReallocationResult;
     }
 
-    private List<Integer> getMemoryBanksForHistory(List<MemoryBank> memoryBanks) {
-        return memoryBanks.stream().map(MemoryBank::getBlocks).collect(toList());
+    private boolean noDuplicationInMemoryBanksAllocationHistory(List<MemoryBank> memoryBanks, MemoryReallocationResult memoryReallocationResult) {
+        return !memoryReallocationResult.historyContains(getMemoryBanksForHistory(memoryBanks));
     }
 
     void reallocate(List<MemoryBank> memoryBanks) {
@@ -41,6 +40,10 @@ class MemoryBankReallocator {
         }
 
 
+    }
+
+    private List<Integer> getMemoryBanksForHistory(List<MemoryBank> memoryBanks) {
+        return memoryBanks.stream().map(MemoryBank::getBlocks).collect(toList());
     }
 
     private boolean isMemoryBankToBeReset(Integer maxAmountOfBlocks, MemoryBank memoryBank) {
