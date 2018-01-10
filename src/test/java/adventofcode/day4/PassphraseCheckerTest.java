@@ -20,4 +20,21 @@ public class PassphraseCheckerTest {
     public void isValid_TrueIfNoDuplicates_ButSubDuplicates() {
         assertThat(new PassphraseChecker().isValid("aa bb cc dd aaa")).isTrue();
     }
+
+    @Test
+    public void isValid_TrueIfNoAnagrams() {
+        assertThat(new PassphraseChecker().isValid("abcde fghij")).isTrue();
+    }
+
+    @Test
+    public void isValid_FalseIfAnagrams() {
+        assertThat(new PassphraseChecker().isValid("abcde xyz ecdab")).isFalse();
+        assertThat(new PassphraseChecker().isValid("oiii ioii iioi iiio")).isFalse();
+    }
+
+    @Test
+    public void isValid_TrueOnlyOnAnagramsUsingAllLetters() {
+        assertThat(new PassphraseChecker().isValid("a ab abc abd abf abj")).isTrue();
+        assertThat(new PassphraseChecker().isValid("iiii oiii ooii oooi oooo")).isTrue();
+    }
 }

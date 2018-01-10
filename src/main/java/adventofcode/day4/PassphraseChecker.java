@@ -1,21 +1,18 @@
 package adventofcode.day4;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 
 class PassphraseChecker {
 
     private static final String PASSPHRASE_WORD_DIVIDER = " ";
 
     public boolean isValid(String passphrase) {
-        List<String> distinctValues = splitPhraseToWords(passphrase)
-                .stream()
-                .distinct()
-                .collect(Collectors.toList());
+        List<List<Character>> distinctValues = getDistinctWords(passphrase);
 
-        return splitPhraseToWords(passphrase)
+        return splitPhraseToWordsWithSortedLetters(passphrase)
                 .stream()
                 .noneMatch(a -> {
                     if (distinctValues.contains(a)) {
@@ -27,8 +24,19 @@ class PassphraseChecker {
                 });
     }
 
-    private List<String> splitPhraseToWords(String passphrase) {
+    private List<List<Character>> getDistinctWords(String passphrase) {
+        return splitPhraseToWordsWithSortedLetters(passphrase)
+                .stream()
+                .distinct()
+                .collect(toList());
+    }
+
+    private List<List<Character>> splitPhraseToWordsWithSortedLetters(String passphrase) {
         return stream(passphrase.split(PASSPHRASE_WORD_DIVIDER))
-                .collect(Collectors.toList());
+                .map(word -> word.chars()
+                        .mapToObj(c -> (char) c)
+                        .sorted()
+                        .collect(toList()))
+                .collect(toList());
     }
 }
