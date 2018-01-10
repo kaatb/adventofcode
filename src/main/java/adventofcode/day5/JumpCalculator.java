@@ -2,7 +2,7 @@ package adventofcode.day5;
 
 import java.util.function.Function;
 
-public class JumpCalculator {
+class JumpCalculator {
 
     int calculate(JumpSequence jumpSequence, Function<Integer, Integer> jumpChangeFunction) {
         int numberOfJumps = 0;
