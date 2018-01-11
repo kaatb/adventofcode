@@ -10,7 +10,7 @@ import java.util.List;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
 
-public class MemoryReallocation {
+public class MemoryReallocationRunner {
 
     public static void main(String[] args) throws IOException {
         List<String> lines = Files.readLines(new File("src/main/resources/day6.txt"), Charset.defaultCharset());

@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.function.Function;
 
-public class Jumps {
+public class JumpsRunner {
 
     public static void main(String[] args) throws IOException {
         List<String> lines = Files.readLines(new File("src/main/resources/day5.txt"), Charset.defaultCharset());

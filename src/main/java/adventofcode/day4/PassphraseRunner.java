@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 
-public class Passphrase {
+public class PassphraseRunner {
 
     public static void main(String[] args) throws IOException {
         PassphraseChecker passphraseChecker = new PassphraseChecker();

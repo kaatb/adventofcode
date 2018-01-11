@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Captcha {
+public class CaptchaRunner {
 
     public static void main(String[] args) throws IOException {
         String captcha = getCaptchaInput();

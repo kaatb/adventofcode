@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
 
-public class Checksum {
+public class ChecksumRunner {
 
     public static void main(String[] args) throws IOException {
         List<String> lines = Files.readLines(new File("src/main/resources/day2.txt"), Charset.defaultCharset());
