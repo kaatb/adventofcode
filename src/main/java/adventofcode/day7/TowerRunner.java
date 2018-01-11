@@ -12,14 +12,18 @@ import static java.util.stream.Collectors.toList;
 public class TowerRunner {
 
     public static void main(String[] args) throws IOException {
-        List<String> lines = Files.readLines(new File("src/main/resources/day7.txt"), Charset.defaultCharset());
-        List<ProgramInputLine> programInputLines = lines.stream().map(ProgramInputLine::new).collect(toList());
+        List<ProgramInputLine> programInputLines = Files.readLines(new File("src/main/resources/day7.txt"), Charset.defaultCharset())
+                .stream()
+                .map(ProgramInputLine::new)
+                .collect(toList());
 
         List<Program> programList = new ProgramCreator().createAllPrograms(programInputLines);
         new ProgramLinker().linkPrograms(programInputLines, programList);
-        Program baseProgram = findBaseProgram(programList);
 
+        Program baseProgram = findBaseProgram(programList);
         System.out.println(baseProgram.getName());
+
+        System.out.println(new TowerBalancer().fixTowerBalance(baseProgram));
     }
 
     private static Program findBaseProgram(List<Program> programList) {
