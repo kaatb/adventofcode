@@ -20,5 +20,6 @@ public class InstructionsRunner {
         InstructionExecutor instructionExecutor = new InstructionExecutor();
         instructionExecutor.execute(instructionLines);
         System.out.println(instructionExecutor.findRegisterWithLargestValue());
+        System.out.println(instructionExecutor.findRegisterWithLargestHistoricalValue().getMaxValue());
     }
 }

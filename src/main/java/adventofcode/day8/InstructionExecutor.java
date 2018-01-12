@@ -53,4 +53,8 @@ class InstructionExecutor {
     public Register findRegisterWithLargestValue() {
         return registers.values().stream().max(comparing(Register::getValue)).get();
     }
+
+    public Register findRegisterWithLargestHistoricalValue() {
+        return registers.values().stream().max(comparing(Register::getMaxValue)).get();
+    }
 }

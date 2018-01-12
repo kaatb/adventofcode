@@ -6,11 +6,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Register {
 
     private final String name;
-    private Integer value;
+    private Integer value = 0;
+    private Integer maxValue = 0;
 
     public Register(String name) {
         this.name = name;
-        this.value = 0;
     }
 
     public Integer getValue() {
@@ -21,12 +21,24 @@ public class Register {
         return name;
     }
 
+    public Integer getMaxValue() {
+        return maxValue;
+    }
+
     public void increase(int toIncreaseWith) {
-        this.value += toIncreaseWith;
+        value += toIncreaseWith;
+        resetMaxValueIfNeeded();
+    }
+
+    private void resetMaxValueIfNeeded() {
+        if (value > maxValue) {
+            maxValue = value;
+        }
     }
 
     public void decrease(int toDecreaseWith) {
-        this.value -= toDecreaseWith;
+        value -= toDecreaseWith;
+        resetMaxValueIfNeeded();
     }
 
     @Override
