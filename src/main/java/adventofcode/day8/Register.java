@@ -48,11 +48,11 @@ public class Register {
 
     @Override
     public boolean equals(Object obj) {
-        return EqualsBuilder.reflectionEquals(this, obj, "value");
+        return EqualsBuilder.reflectionEquals(this, obj, "value", "maxValue");
     }
 
     @Override
     public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this, "value");
+        return HashCodeBuilder.reflectionHashCode(this, "value", "maxValue");
     }
 }
