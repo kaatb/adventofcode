@@ -11,7 +11,7 @@ import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.stream.Collectors.toList;
 
-public class Runner {
+public class Part1Runner {
 
     public static void main(String[] args) throws IOException {
         List<Integer> lengthSequence = Files.readLines(new File("src/main/resources/day10.txt"), Charset.defaultCharset())
@@ -23,8 +23,8 @@ public class Runner {
                 .get();
         List<Integer> list = createInitialList(256);
 
-        System.out.println(new HashCalculator().knotHash(list, lengthSequence));
-
+        List<Integer> sparseHash = new HashCalculator().sparseHash(list, lengthSequence);
+        System.out.println(sparseHash.get(0) * sparseHash.get(1));
     }
 
     private static List<Integer> createInitialList(int listLength) {
@@ -34,6 +34,4 @@ public class Runner {
         }
         return list;
     }
-
-
 }
