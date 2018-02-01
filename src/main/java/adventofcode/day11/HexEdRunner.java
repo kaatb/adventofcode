@@ -17,8 +17,11 @@ public class HexEdRunner {
                 .collect(toList());
 
         List<HexAlignment> path = new HexPathParser().parse(input.get(0));
+        List<Hexagon> hexagonList = new HexPathCreator().create(path);
 
         System.out.println(new HexPathOptimizer().getNumberOfStepsInOptimizedPath(path));
-    }
 
+        System.out.println(new HexPathDistanceCalculator().getNumberOfStepsOfOptimizedPath(hexagonList));
+        System.out.println(new HexPathDistanceCalculator().getFurthestDistanceFromStartingPoint(hexagonList));
+    }
 }
