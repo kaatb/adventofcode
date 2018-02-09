@@ -22,8 +22,11 @@ public class Runner {
                 .collect(toList());
 
         Packet packet = new Packet();
-        new LayerScanner(layers).scan(packet);
-
+        LayerScanner layerScanner = new LayerScanner(layers);
+        layerScanner.scan(packet);
         System.out.println(packet.getSeverityOfTrip());
+
+        System.out.println(layerScanner.scan2());
+        System.out.println(layerScanner.getWaitTimeForNotGettingCaught());
     }
 }

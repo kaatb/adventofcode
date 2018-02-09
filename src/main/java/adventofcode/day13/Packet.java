@@ -14,7 +14,7 @@ public class Packet {
         this.currentLayer = currentLayer;
     }
 
-    boolean isCaughtInCurrentLayer() {
+    boolean checkCaughtInCurrentLayer() {
         if (currentLayer.isPresent() && currentLayer.get().isCaught()) {
             layersWhereCaught.add(currentLayer.get());
             return true;

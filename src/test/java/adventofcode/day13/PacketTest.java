@@ -24,7 +24,7 @@ public class PacketTest {
         packet.setCurrentLayer(Optional.of(layer1));
         when(layer1.isCaught()).thenReturn(true);
 
-        assertThat(packet.isCaughtInCurrentLayer()).isTrue();
+        assertThat(packet.checkCaughtInCurrentLayer()).isTrue();
         assertThat(packet.getLayersWhereCaught()).containsOnly(layer1);
     }
 
@@ -35,7 +35,7 @@ public class PacketTest {
 
         when(layer1.isCaught()).thenReturn(false);
 
-        assertThat(packet.isCaughtInCurrentLayer()).isFalse();
+        assertThat(packet.checkCaughtInCurrentLayer()).isFalse();
         assertThat(packet.getLayersWhereCaught()).isEmpty();
     }
 
@@ -44,7 +44,7 @@ public class PacketTest {
         Packet packet = new Packet();
         packet.setCurrentLayer(Optional.empty());
 
-        assertThat(packet.isCaughtInCurrentLayer()).isFalse();
+        assertThat(packet.checkCaughtInCurrentLayer()).isFalse();
         assertThat(packet.getLayersWhereCaught()).isEmpty();
     }
 

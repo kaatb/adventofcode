@@ -36,6 +36,10 @@ class Layer {
         return securityScanner == 0L;
     }
 
+    boolean willCatchIntruder(Long wait) {
+        return (wait + depth) % (range * 2 - 2) == 0;
+    }
+
     Long getSecurityScanner() {
         return securityScanner;
     }
